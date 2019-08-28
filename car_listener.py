@@ -76,7 +76,31 @@ class ActuatorNode:
 		if (data == ord('e')):
 			self.pwm.set_pwm(self.servo_port, 0, self.left_max) 
 			print("sharp right turn") 
-			time.sleep(0.01)
+		    	time.sleep(0.01)
+
+                if( data == ord('j')):
+                        self.pwm.set_pwm(self.servo_port, 0, self.steer_center)
+                        self.pwm.set_pwm(self.motor_port, 0, self.speed_center)
+
+                        print("Turning Left")
+
+                        self.pwm.set_pwm(self.motor_port, 0, self.speed_max)
+
+                        time.sleep(1)
+
+                        self.pwm.set_pwm(self.servo_port, 0, self.steer_max // 2)
+
+                        time.sleep(1.5)
+
+                        self.pwm.set_pwm(self.servo_port, 0, self.steer_max)
+
+                        time.sleep(1)
+
+                        self.pwm.set_pwm(self.servo_port, 0, self.steer_center)
+
+                        time.sleep(1)
+
+                        self.pwm.set_pwm(self.motor_port, 0, self.speed_center)
 	
 	def watch_tower(self,data):
 		data = data.control
